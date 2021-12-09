@@ -1,9 +1,13 @@
+import { useState } from 'react';
 import './App.css';
 
 function App() {
   
   return(
     <div>
+      <Moblie></Moblie>;
+      <Moblie></Moblie>;
+
       <Article></Article>;
       <Blog heading = 'Blog-1' author = 'Author-1'></Blog>;
       <Blog heading = 'Blog-2' author = 'Author-2'></Blog>;
@@ -12,6 +16,23 @@ function App() {
     </div>
   );
   
+}
+function Moblie(){
+  const [charge, setCharge] = useState(100)
+  const handleCharging = ()=>{
+    if(charge<=0){
+
+    }
+    const newCharge = charge-10;
+    setCharge(newCharge);
+  }
+  return(
+    <div className='container'>
+    <h1>{charge}%</h1>
+
+     <button onClick={handleCharging} className='button-style' disabled={charge<=0}>Discharge</button>
+    </div>
+  );
 }
 
 function Article(){
