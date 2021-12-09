@@ -1,22 +1,41 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
+  const[toDos, settoDos] = useState([]);
+  useEffect(()=>{
+    fetch('https://jsonplaceholder.typicode.com/todos')
+    .then(res => res.json())
+    .then(data => settoDos(data))
+  },[]);
   
   return(
     <div>
       <Moblie></Moblie>;
-      <Moblie></Moblie>;
-
       <Article></Article>;
       <Blog heading = 'Blog-1' author = 'Author-1'></Blog>;
       <Blog heading = 'Blog-2' author = 'Author-2'></Blog>;
       <Blog heading = 'Blog-3' author = 'Author-3'></Blog>;
+
+      {
+        toDos.map(ToDo => <ToDos title={ToDo.title} id = {ToDo.id} ></ToDos> )
+      }
       
     </div>
   );
   
 }
+
+function ToDos(props){
+  return(
+    <div className='container'>
+    <h1>Title: {props.title}</h1>
+    <h4>ID: {props.id}</h4>
+    </div>
+   
+  );
+}
+
 function Moblie(){
   const [charge, setCharge] = useState(100)
   const handleCharging = ()=>{
