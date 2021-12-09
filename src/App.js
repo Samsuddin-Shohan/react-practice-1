@@ -2,22 +2,19 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const articleStyle={
+    color: 'white',
+    fontSize:'2rem',
+    textAlign: 'left'
+
+
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='container'>
+      <article className='blog' style={articleStyle} >
+        <h2>This is the article</h2>
+        <p style={{color: 'orangeRed', fontWeight: 'bolder'}}>Hello I am the article</p>
+      </article>
     </div>
   );
 }
